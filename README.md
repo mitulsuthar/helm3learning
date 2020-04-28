@@ -1,5 +1,3 @@
-# helm3learning
-Helm 3 commands
 # Helm Guide 
 
 ## Helm Installation Guide
