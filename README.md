@@ -7,7 +7,7 @@
 
 View current context in use
 ```
-kubectl get-contexts
+kubectl config get-contexts
 ```
 Use different context - In the command below we use `docker-desktop`
 
