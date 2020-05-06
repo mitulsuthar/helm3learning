@@ -92,7 +92,7 @@ helm search repo mysql
 ## Inspect or Show Chart Information 
 Use Helm Show or Helm Inspect command to find more information about a chart.
 
-Show chart information only - Shows basic information about Chart like apiVersion, appVersion, dependencies, description, maintaineres, etc.
+Show chart information only - Shows basic information about Chart like apiVersion, appVersion, dependencies, description, maintainers, etc.
 ```
 helm show chart stable/mysql
 ```
