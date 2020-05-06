@@ -40,6 +40,12 @@ Verify Helm Version
 helm version
 ```
 
+## See Helm ENV Variables
+Get helm environment variables. 
+```
+helm env
+```
+
 ## Helm Repo vs Hub
 Search a chart against Helm Hub
 ```
