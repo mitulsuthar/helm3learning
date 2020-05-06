@@ -57,7 +57,7 @@ Adding a repository
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-## Initialize Helm Chart Repository
+## Add Helm Chart Repository
 
 Add chart repository
 ```
@@ -84,6 +84,30 @@ Show chart full information
 helm show all stable/mysql
 ```
 
+## Inspect or Show Chart Information 
+Use Helm Show or Helm Inspect command to find more information about a chart.
+
+Show chart information only - Shows basic information about Chart like apiVersion, appVersion, dependencies, description, maintaineres, etc.
+```
+helm show chart stable/mysql
+```
+
+Show chart's readme information.
+```
+helm show readme stable/mysql
+```
+
+Show chart's default values. 
+```
+helm show values stable/mysql
+```
+
+Show everything about a chart, i.e. Chart, Readme, Values
+```
+helm show all stable/mysql
+```
+
+## Installing a Chart without customization
 Check before you install step aka `--dry-run`. You can use any other name other than happy-panda.
 ```
 helm install stable/mysql happy-panda --dry-run
@@ -102,12 +126,14 @@ Check the status of the release
 ```
 helm status happy-panda --namespace helmtesting
 ```
-See what is installed
+
+## List all the releases
+List all the releases in the default namespace
 ```
 helm ls
 ```
 
-See what is installed in all the Namespaces
+See what is installed in all the namespaces
 ```
 helm ls -A
 ```
@@ -117,7 +143,31 @@ See what is installed in `helmtesting` namespace.
 helm ls --namespace helmtesting
 ```
 
-Uninstall mysql release.
+## Get extended information about a release
+
+Get the notes provided by the chart of the release
+```
+helm get notes happy-panda --namespace helmtesting
+```
+
+Get the generated manifest file for the release
+```
+helm get manifest happy-panda --namespace helmtesting
+```
+
+Get values used to generate the release 
+```
+helm get values happy-panda --namespace helmtesting
+```
+
+Get hooks associated with the release
+```
+helm get hooks happy-panda --namespace helmtesting
+```
+
+
+## Uninstalling Helm Releases
+Uninstall a release by its name.
 ```
 helm uninstall happy-panda
 ```
@@ -131,7 +181,6 @@ Show release status by querying it. Post uninstall it will only show if you had 
 ```
 helm status  happy-panda --namespace helmtesting
 ```
-
 
 
 ## Creating Charts
