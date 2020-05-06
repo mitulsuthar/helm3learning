@@ -47,20 +47,29 @@ helm env
 ```
 
 ## Helm Repo vs Hub
-Search a chart against Helm Hub
+A Repository is place that stores different charts. For eg, mysql chart, wordpress chart. For each, chart the repository stores more than one version of the chart. 
+Helm Hub is the central location where you can search for a chart across many remotely hosted repositories. These repositories are maintained by different organizations. 
+
+Helm search allows you to search against Hub or against local repositories
+
+Search a chart against Helm Hub across many repositories
 ```
 helm search hub wordpress
 ```
 
-Installing a helm chart
+List local repositories. By default, helm doesn't come with any repositories configured. 
 ```
-helm install my-wordpress bitnami/wordpress --dry-run
+helm repo list 
 ```
-`Error: Failed to download wordpress` - This is because we haven't added bitnami repository 
 
 Adding a repository
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
+```
+
+After you have added a repository you can also search against repositories that you have added to your local registry.
+```
+helm search repo wordpress
 ```
 
 ## Add Helm Chart Repository
@@ -75,19 +84,9 @@ List charts from repository
 helm search repo stable
 ```
 
-Seearch for mysql chart
+Search for mysql chart in repo
 ```
 helm search repo mysql
-```
-
-Show chart information
-```
-helm show repo stable/mysql
-```
-
-Show chart full information 
-```
-helm show all stable/mysql
 ```
 
 ## Inspect or Show Chart Information 
