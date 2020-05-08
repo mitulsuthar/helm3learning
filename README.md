@@ -132,6 +132,43 @@ Check the status of the release
 helm status happy-panda --namespace helmtesting
 ```
 
+## Customizing a chart before installing
+
+Set one value - For wordpress, change replicaCount from 1 to 4 
+ ```
+ helm install my-wordpress bitnami/wordpress --set replicaCount=4 --namespace helmtesting --dry-run
+```
+
+Set multiple values by providing it as an array of values 
+ ```
+ helm install my-wordpress bitnami/wordpress --set replicaCount=4,wordpressUsername=Adminotron,wordpressBlogName='Helm Learing Blog' --namespace helmtesting --dry-run
+ ```
+
+Set multiple values by providing --set flag multiple times 
+```
+ helm install my-wordpress bitnami/wordpress --set replicaCount=4 --set wordpressUsername=Adminotron,wordpressBlogName='Helm Learing Blog' --namespace helmtesting --dry-run
+```
+
+Change multiple values by providing a .yaml file
+```
+helm install my-wordpress bitnami/wordpress -f values.yaml --namespace helmtesting --dry-run
+```
+
+Change multiple values by providing a .yaml file and --set flag
+```
+helm install my-wordpress bitnami/wordpress -f values.yaml --set replicaCount=3,wordpressBlogName='Override blog name' --namespace helmtesting --dry-run
+```
+
+Enforce a string. i.e. In the example below, the myParam value should be explicitly considered as string value.
+```
+helm install my-wordpress bitnami/wordpress --set-string myParam=112311 --namespace helmtesting --dry-run
+```
+
+Provide your own value by providing your own file. For example, you might want to provide your own script file or certificate file as a parameter. 
+```
+helm install my-wordpress bitnami/wordpress --set-file scriptFile=myScript.sh --namespace helmtesting --dry-run
+```
+
 ## List all the releases
 List all the releases in the default namespace
 ```
