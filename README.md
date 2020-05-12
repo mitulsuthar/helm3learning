@@ -209,12 +209,12 @@ helm get hooks happy-panda --namespace helmtesting
 
 
 ## Uninstalling Helm Releases
-Uninstall a release by its name.
+Do a dry-run before uninstalling a release by its name 
 ```
-helm uninstall happy-panda
+helm uninstall happy-panda --namespace helmtesting --dry-run
 ```
 
-Oops. Didn't find the release. Specify `--namespace` and `--keep-history` flags. `--keep-history` allows you to rollback a release.
+Specify `--namespace` and `--keep-history` flags. `--keep-history` allows you to rollback a release.
 ```
 helm uninstall happy-panda --namespace helmtesting --keep-history
 ```
@@ -222,6 +222,11 @@ helm uninstall happy-panda --namespace helmtesting --keep-history
 Show release status by querying it. Post uninstall it will only show if you had `--keep-history` flag.
 ```
 helm status  happy-panda --namespace helmtesting
+```
+
+Helm uninstall without executing any hooks 
+```
+helm uninstall --no-hooks --namespace helmtesting 
 ```
 
 
