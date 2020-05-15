@@ -207,6 +207,59 @@ Get hooks associated with the release
 helm get hooks happy-panda --namespace helmtesting
 ```
 
+## Upgrading a Helm Release 
+Get helm upgrade information
+```
+helm upgrade --help
+```
+
+Install an older version of a release 
+```
+helm install happy-panda bitnami/wordpress --version 9.2.3 --set wordpressBlogName='Happy Helming' --namespace helmtesting
+```
+
+If no version is specified, helm will upgrade the release to the latest version of the chart.
+```
+helm upgrade happy-panda bitnami/wordpress --namespace helmtesting 
+```
+
+Run History Command to see the history of the release.
+```
+helm history happy-panda --namespace helmtesting
+```
+
+What happens if we run the same upgrade command again
+```
+helm upgrade happy-panda bitnami/wordpress --namespace helmtesting 
+```
+
+Run History command again. You will notice that a new revision was created with the same chart.
+```
+helm history happy-panda --namespace helmtesting
+```
+
+Can I upgrade a release to a lower version? 
+```
+helm upgrade happy-panda bitnami/wordpress --version 9.2.2 --namespace helmtesting
+```
+
+Verify by running the history command again.
+```
+help history happy-panda --namespace helmtesting
+```
+
+Set your own values for release, doesn't respect the old values. 
+```
+helm upgrade happy-panda bitnami/wordpress --set wordpressBlogName='Happy Helming Blog' --namespace helmtesting
+```
+
+Reset all the values to the chart's default values.
+```
+helm upgrade happy-panda bitnami/wordpress --reset-values --namespace helmtesting
+```
+
+
+
 
 ## Uninstalling Helm Releases
 Do a dry-run before uninstalling a release by its name 
